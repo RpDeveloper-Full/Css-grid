@@ -1,0 +1,61 @@
+/* Reset básico */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: system-ui, sans-serif;
+  background: #f4f6fb;
+  color: #111;
+  line-height: 1.5;
+}
+
+/* Áreas principales del layout con grid */
+.grid-layout {
+  display: grid;
+  grid-template-areas:
+    "sidebar content extra";
+  grid-template-columns: 200px 1fr 180px; /* ancho de columnas */
+  gap: 16px;
+  padding: 16px;
+}
+
+/* Header y footer fuera del grid principal */
+.site-header,
+.site-footer {
+  background: #2b6df6;
+  color: #fff;
+  padding: 16px;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* Definición de áreas */
+.sidebar { grid-area: sidebar; background: #fff; padding: 16px; border-radius: 8px; }
+.content { grid-area: content; background: #fff; padding: 16px; border-radius: 8px; }
+.extra   { grid-area: extra;   background: #fff; padding: 16px; border-radius: 8px; }
+
+/* Grid interno para tarjetas */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 12px;
+  margin-top: 12px;
+}
+.card {
+  background: #eaf0ff;
+  border-radius: 8px;
+  padding: 20px;
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+/* Responsive: en pantallas pequeñas apilar */
+@media (max-width: 768px) {
+  .grid-layout {
+    grid-template-areas:
+      "sidebar"
+      "content"
+      "extra";
+    grid-template-columns: 1fr;
+  }
+}
